@@ -1,14 +1,17 @@
+import os   
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
-from ydata_profiling import ProfileReport
+# from ydata_profiling import ProfileReport
+from ydata.profiling import ProfileReport
 
+os.environ['YDATA_LICENSE_KEY'] = 'd0d86879-1ac0-43b5-b604-f5e93848d95d'
 
 df = pd.read_csv('data/Datasetprojpowerbi.csv')
 
-profile = ProfileReport(df, title="University Student Complaint Report", explorative=True)
+profile = ProfileReport(df, title="University Student Complaint Report", explorative=True, outlier=True)
 
 profile.to_file("university_student_complaint_report.html")
 
@@ -139,13 +142,13 @@ custom_plot_html = """
 <h1 style="text-align: center;">Custom Plot Visualization</h1>
 <div style="display: flex; justify-content: center;">
 <div style="display: grid; gap: 10px;">
-<img src="custom_report_image/distribution_of_complaint_genres.png" style="width: 800px; height:600px;" />
-<img src="custom_report_image/complaints_by_gender_across_genres.png" style="width: 800px; height: 600px;" />
-<img src="custom_report_image/complaints_by_nationality.png" style="width: 800px; height: 600px;" />
-<img src="custom_report_image/correlation_matrix_of_numerical_features.png" style="width: 800px; height: 600px;" />
-<img src="custom_report_image/distribution_of_complaint_genres.png" style="width: 800px; height: 600px;" />
-<img src="custom_report_image/gpa_distribution_by_complaint_genre.png" style="width: 800px; height: 600px;" />
-<img src="custom_report_image/number_of_complaints_over_the_academic_years.png" style="width: 800px; height: 600px;" />
+<img src="custom_report_image/distribution_of_complaint_genres.png" style="width: 100%; height:100%;" />
+<img src="custom_report_image/complaints_by_gender_across_genres.png" style="width: 100%; height: 100%;" />
+<img src="custom_report_image/complaints_by_nationality.png" style="width: 100%; height: 100%;" />
+<img src="custom_report_image/correlation_matrix_of_numerical_features.png" style="width: 100%; height: 100%;" />
+<img src="custom_report_image/distribution_of_complaint_genres.png" style="width: 100%; height: 100%;" />
+<img src="custom_report_image/gpa_distribution_by_complaint_genre.png" style="width: 100%; height: 100%;" />
+<img src="custom_report_image/number_of_complaints_over_the_academic_years.png" style="width: 100%; height: 100%;" />
 </div>
 </div>
 """
